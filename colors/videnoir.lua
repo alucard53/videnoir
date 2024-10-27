@@ -76,7 +76,7 @@ local colors = {
     Float = { link = "Number" },
     ["@float"] = { link = "Number" },
 
-    Function = { fg = "#F5B2F0" },
+    Function = { link = "Keyword" },
     Identifier = { fg = greenLightest },
 
     Include = { fg = greenDarkest },
