@@ -7,12 +7,12 @@ local greenDarkest = "#1F6706"
 local greenMid = "#3FA04F"
 local greenMidder = "#7FBF7F"
 local greenFull = "#00FA00"
-local greenLight = "#AF001C"
-local greenLightest = "#CFFFCF"
+local greenLightest = "#C3FFC3"
 
 local colors = {
     -- content here will not be touched
     -- PATCH_OPEN
+    Directory = { fg = greenMidder },
 
     Normal = { fg = "#9F9F9F", bg = "#0B0B0B" },
     ["@punctuation.bracket"] = { link = "Normal" },
@@ -25,7 +25,7 @@ local colors = {
     Character = { fg = greenFull },
     ["@character"] = { link = "Character" },
 
-    Comment = { fg = greenLight, italic = true },
+    Comment = { fg = "#606060", italic = true },
     ["@comment"] = { link = "Comment", italic = true },
 
     Conditional = { fg = "#D6FFAC" },
@@ -77,7 +77,7 @@ local colors = {
     ["@float"] = { link = "Number" },
 
     Function = { link = "Keyword" },
-    Identifier = { fg = greenLightest },
+    Identifier = { fg = "#DEDEDE" },
 
     Include = { fg = greenDarkest },
     ["@keyword.import"] = { link = "Include" },
@@ -113,8 +113,6 @@ local colors = {
     ["@type"] = { link = "Type" },
     ["@type.builtin"] = { fg = greenMid },
 
-
-
     Typedef = { fg = "#8E6EA6" },
     Visual = { fg = whiteFull, bg = greenMid },
     ["@comment.documentation"] = { fg = "#624E6E", italic = true },
@@ -140,25 +138,15 @@ local colors = {
 
     ["@variable"] = { fg = "#DEDEDE" },
     ["@variable.builtin"] = { fg = "#DEDEDE" },
-    ["@variable.member"] = { fg = "#DEDEDE" },
+    ["@variable.member"] = { fg = greenLightest },
     ["@variable.parameter"] = { fg = "#DEDEDE" },
     ["@variable.parameter.builtin"] = { fg = "#DEDEDE" },
-
-    -- PATCH_CLOSE
-    -- content here will not be touched
 }
+-- what color should I pick for comments????
 
--- colorschemes generally want to do this
 vim.cmd("highlight clear")
 vim.cmd("set t_Co=256")
 vim.cmd("let g:colors_name='videnoir'")
---[[
-vim.api.nvim_set_hl(0, "DiagnosticErrorLn", { bg = "#330000" })
-vim.api.nvim_set_hl(0, "DiagnosticWarningLn", { bg = "#727212" })
-vim.api.nvim_set_hl(0, "DiagnosticInfoLn", { bg = "#00afaf" })
-vim.api.nvim_set_hl(0, "DiagnosticHintLn", { bg = "#00af00" })
---]]
--- apply highlight groups
 for group, attrs in pairs(colors) do
     vim.api.nvim_set_hl(0, group, attrs)
 end
